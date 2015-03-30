@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import cn.gzjp.common.f2s.conver.ConverToObjIface;
-import cn.gzjp.common.f2s.conver.F2SResultIface;
-import cn.gzjp.common.f2s.engine.File2ObjHandleIface;
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
+import cn.gzjp.common.modules.fs.conver.ConverToObjIface;
+import cn.gzjp.common.modules.fs.conver.F2SResultIface;
+import cn.gzjp.common.modules.fs.engine.File2ObjHandleIface;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
 
 /**
  * @ClassName: BaseFile2ObjHandleImpl 

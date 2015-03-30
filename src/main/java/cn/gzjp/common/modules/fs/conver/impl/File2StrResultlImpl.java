@@ -12,6 +12,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import cn.gzjp.common.modules.fs.conver.F2SResultIface;
+import cn.gzjp.common.utils.CloseUtil;
 import cn.gzjp.common.utils.UnicodeReader;
 
 /**

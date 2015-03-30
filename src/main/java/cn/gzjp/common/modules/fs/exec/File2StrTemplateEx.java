@@ -13,6 +13,7 @@ import cn.gzjp.common.modules.fs.conver.impl.File2StrResultlImpl;
 import cn.gzjp.common.modules.fs.engine.File2ObjHandleIface;
 import cn.gzjp.common.modules.fs.engine.impl.DefaultFile2ObjHandleImpl;
 import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
+import cn.gzjp.common.utils.CloseUtil;
 
 /**
  * @ClassName: File2StrTemplateEx 
