@@ -1,4 +1,4 @@
-package cn.gzjp.common.f2s.conver;
+package cn.gzjp.common.modules.fs.conver;
 
 /**
  * @ClassName: AnnotToStrHandleIface 

@@ -1,11 +1,11 @@
-package cn.gzjp.common.f2s.engine;
+package cn.gzjp.common.modules.fs.engine;
 
 import java.util.List;
 import java.util.Set;
 
-import cn.gzjp.common.f2s.conver.ConverToObjIface;
-import cn.gzjp.common.f2s.conver.F2SResultIface;
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
+import cn.gzjp.common.modules.fs.conver.ConverToObjIface;
+import cn.gzjp.common.modules.fs.conver.F2SResultIface;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
 
 /**
  * 将文件解析为对象接口

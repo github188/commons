@@ -1,12 +1,12 @@
-package cn.gzjp.common.f2s.exec;
+package cn.gzjp.common.modules.fs.exec;
 
 import java.io.OutputStream;
 import java.io.Writer;
 
-import cn.gzjp.common.f2s.conver.ConverToStrIface;
-import cn.gzjp.common.f2s.conver.impl.DefaultConverToStrImpl;
-import cn.gzjp.common.f2s.engine.Obj2StrHandleIface;
-import cn.gzjp.common.f2s.engine.impl.DefaultObj2StrHandleImpl;
+import cn.gzjp.common.modules.fs.conver.ConverToStrIface;
+import cn.gzjp.common.modules.fs.conver.impl.DefaultConverToStrImpl;
+import cn.gzjp.common.modules.fs.engine.Obj2StrHandleIface;
+import cn.gzjp.common.modules.fs.engine.impl.DefaultObj2StrHandleImpl;
 
 /**
  * @ClassName: Str2FileTemplateEx 

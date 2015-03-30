@@ -1,19 +1,18 @@
-package cn.gzjp.common.f2s.exec;
+package cn.gzjp.common.modules.fs.exec;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 
-import cn.gzjp.common.f2s.conver.BigF2SResultIface;
-import cn.gzjp.common.f2s.conver.ConverToObjIface;
-import cn.gzjp.common.f2s.conver.F2SResultIface;
-import cn.gzjp.common.f2s.conver.impl.DefaultConverToObjImpl;
-import cn.gzjp.common.f2s.conver.impl.File2StrResultlImpl;
-import cn.gzjp.common.f2s.engine.File2ObjHandleIface;
-import cn.gzjp.common.f2s.engine.impl.DefaultFile2ObjHandleImpl;
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
-import cn.gzjp.common.utils.CloseUtil;
+import cn.gzjp.common.modules.fs.conver.BigF2SResultIface;
+import cn.gzjp.common.modules.fs.conver.ConverToObjIface;
+import cn.gzjp.common.modules.fs.conver.F2SResultIface;
+import cn.gzjp.common.modules.fs.conver.impl.DefaultConverToObjImpl;
+import cn.gzjp.common.modules.fs.conver.impl.File2StrResultlImpl;
+import cn.gzjp.common.modules.fs.engine.File2ObjHandleIface;
+import cn.gzjp.common.modules.fs.engine.impl.DefaultFile2ObjHandleImpl;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
 
 /**
  * @ClassName: File2StrTemplateEx 

@@ -1,13 +1,13 @@
-package cn.gzjp.common.f2s.conver.impl;
+package cn.gzjp.common.modules.fs.conver.impl;
 
 import java.lang.reflect.Field;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import cn.gzjp.common.f2s.conver.ConverToObjIface;
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
-import cn.gzjp.common.f2s.fsEntity.annot.PositionAnnotaion;
+import cn.gzjp.common.modules.fs.conver.ConverToObjIface;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
+import cn.gzjp.common.modules.fs.fsEntity.annot.PositionAnnotaion;
 
 public class DefaultConverToObjImpl implements ConverToObjIface{
 	

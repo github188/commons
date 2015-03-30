@@ -1,6 +1,6 @@
-package cn.gzjp.common.f2s.conver;
+package cn.gzjp.common.modules.fs.conver;
 
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
 
 /**
  * @ClassName: AnnotToObjHandleIface 

@@ -1,4 +1,4 @@
-package cn.gzjp.common.f2s.conver.impl;
+package cn.gzjp.common.modules.fs.conver.impl;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -11,9 +11,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import cn.gzjp.common.f2s.UnicodeReader;
-import cn.gzjp.common.f2s.conver.F2SResultIface;
-import cn.gzjp.common.utils.CloseUtil;
+import cn.gzjp.common.modules.fs.conver.F2SResultIface;
+import cn.gzjp.common.utils.UnicodeReader;
 
 /**
  * 对账文件解析工具类

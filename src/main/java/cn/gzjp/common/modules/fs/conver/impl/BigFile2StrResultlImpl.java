@@ -1,9 +1,9 @@
-package cn.gzjp.common.f2s.conver.impl;
+package cn.gzjp.common.modules.fs.conver.impl;
 
 import java.io.IOException;
 import java.util.List;
 
-import cn.gzjp.common.f2s.conver.BigF2SResultIface;
+import cn.gzjp.common.modules.fs.conver.BigF2SResultIface;
 
 /**
  * 大文件分批读取 实现

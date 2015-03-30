@@ -1,13 +1,13 @@
-package cn.gzjp.common.f2s.engine.impl;
+package cn.gzjp.common.modules.fs.engine.impl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.gzjp.common.f2s.conver.ConverToObjIface;
-import cn.gzjp.common.f2s.conver.F2SResultIface;
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
+import cn.gzjp.common.modules.fs.conver.ConverToObjIface;
+import cn.gzjp.common.modules.fs.conver.F2SResultIface;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
 
 /**
  * 仅处理文件中第一行可封装成一个对象 后面的N行封装成一个List<Object> 的情况

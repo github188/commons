@@ -1,12 +1,12 @@
-package cn.gzjp.common.f2s.conver.impl;
+package cn.gzjp.common.modules.fs.conver.impl;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.gzjp.common.f2s.conver.ConverToStrIface;
-import cn.gzjp.common.f2s.fsEntity.annot.PositionAnnotaion;
-import cn.gzjp.common.f2s.fsEntity.annot.SplitAnnotaion;
+import cn.gzjp.common.modules.fs.conver.ConverToStrIface;
+import cn.gzjp.common.modules.fs.fsEntity.annot.PositionAnnotaion;
+import cn.gzjp.common.modules.fs.fsEntity.annot.SplitAnnotaion;
 
 public class DefaultConverToStrImpl implements ConverToStrIface {
 	@Override

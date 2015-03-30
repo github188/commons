@@ -1,4 +1,4 @@
-package cn.gzjp.common.f2s.fsEntity.annot;
+package cn.gzjp.common.modules.fs.fsEntity.annot;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

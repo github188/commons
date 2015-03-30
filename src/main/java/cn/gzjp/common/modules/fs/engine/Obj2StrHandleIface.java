@@ -1,6 +1,6 @@
-package cn.gzjp.common.f2s.engine;
+package cn.gzjp.common.modules.fs.engine;
 
-import cn.gzjp.common.f2s.conver.ConverToStrIface;
+import cn.gzjp.common.modules.fs.conver.ConverToStrIface;
 
 /**
  * @ClassName: Obj2StrHandleIface 

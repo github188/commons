@@ -1,7 +1,7 @@
-package cn.gzjp.common.f2s.engine.impl;
+package cn.gzjp.common.modules.fs.engine.impl;
 
-import cn.gzjp.common.f2s.conver.ConverToStrIface;
-import cn.gzjp.common.f2s.engine.Obj2StrHandleIface;
+import cn.gzjp.common.modules.fs.conver.ConverToStrIface;
+import cn.gzjp.common.modules.fs.engine.Obj2StrHandleIface;
 
 public class BaseObj2StrHandleImpl implements Obj2StrHandleIface{
 

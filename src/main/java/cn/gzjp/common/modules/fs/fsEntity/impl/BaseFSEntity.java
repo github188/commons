@@ -2,8 +2,8 @@ package cn.gzjp.common.modules.fs.fsEntity.impl;
 
 import org.apache.commons.lang3.StringUtils;
 
-import cn.gzjp.common.f2s.fsEntity.FSEntityIface;
-import cn.gzjp.common.f2s.fsEntity.annot.SplitAnnotaion;
+import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
+import cn.gzjp.common.modules.fs.fsEntity.annot.SplitAnnotaion;
 
 /**
  * 基本文件实体
