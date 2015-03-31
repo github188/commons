@@ -1,6 +1,9 @@
 package cn.gzjp.common.utils;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -11,32 +14,37 @@ public class UnicomAESUtil {
 	private static final String key = "8mfxt9siysjm84zr";
 	private static final String iv = "chb84py3hjonw84p";
 	
+	private static final String algorithm = "AES";
+	private static final String transformation = "AES/CBC/PKCS5Padding";
+	
 	public static String encrypt(String data) throws Exception {
         byte[] dataBytes = data.getBytes();
         
-        SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(), "AES");
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");//"算法/模式/补码方式"
-        IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());//使用CBC模式，需要一个向量iv，可增加加密算法的强度
-        cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivspec);
-        byte[] encrypted = cipher.doFinal(dataBytes);
+        byte[] encrypted = initCipher(Cipher.ENCRYPT_MODE).doFinal(dataBytes);
 
         return new BASE64Encoder().encode(encrypted);
     }
 	
 	public static String desEncrypt(String data) throws Exception {
+		byte[] encrypted = new BASE64Decoder().decodeBuffer(data);
 
-		byte[] encrypted1 = new BASE64Decoder().decodeBuffer(data);
-
-		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), "AES");
-		IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
-
-		cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
-
-		byte[] original = cipher.doFinal(encrypted1);
+		
+		byte[] original = initCipher(Cipher.DECRYPT_MODE).doFinal(encrypted);
 		String originalString = new String(original);
 
 		return originalString;
+	}
+	
+	private static Cipher initCipher(int mode) throws Exception{
+		SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), algorithm);
+		IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
+		Cipher cipher = Cipher.getInstance(transformation);
+		
+		cipher.init(mode, keyspec, ivspec);
+		
+		//cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
+		
+		return cipher;
 	}
 
 	public static void main(String[] args) throws Exception {
