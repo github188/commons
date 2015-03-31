@@ -1,9 +1,6 @@
 package cn.gzjp.common.utils;
 
-import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -38,11 +35,9 @@ public class UnicomAESUtil {
 	private static Cipher initCipher(int mode) throws Exception{
 		SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), algorithm);
 		IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
+		
 		Cipher cipher = Cipher.getInstance(transformation);
-		
 		cipher.init(mode, keyspec, ivspec);
-		
-		//cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
 		
 		return cipher;
 	}
