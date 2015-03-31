@@ -183,8 +183,8 @@ public class FindWhyFromTheLog {
 	
 	
 	public static void main(String[] args){
-		FindWhyFromTheLog exe = new FindWhyFromTheLog("192.168.8.23", "ias","jpkj9ias");
-		System.out.println(exe.executeCommand("cd /work/ias/mcplogs/impl"));
+		FindWhyFromTheLog exe = new FindWhyFromTheLog("192.168.8.xx", "oo","xx");
+		System.out.println(exe.executeCommand("cd /work/"));
 		System.out.println(exe.executeCommand("ls"));
 	}
 }
