@@ -9,21 +9,19 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import cn.gzjp.base.logger.ssh.entity.SSHOptionType;
-import cn.gzjp.base.logger.ssh.entity.SSHServer;
-import cn.gzjp.base.logger.ssh.util.FindWhyFromTheLog;
-import cn.gzjp.base.logger.ssh.util.SSHInitConfig;
-import cn.gzjp.base.service.PortalService;
-import cn.gzjp.base.util.DateUtils;
+import cn.gzjp.common.modules.ssh.entity.SSHOptionType;
+import cn.gzjp.common.modules.ssh.entity.SSHServer;
+import cn.gzjp.common.modules.ssh.util.FindWhyFromTheLog;
+import cn.gzjp.common.modules.ssh.util.SSHInitConfig;
+import cn.gzjp.common.utils.DateUtils;
 
 @Service("sshLogService")
-public class SSHLogService extends PortalService{
+public class SSHLogService{
 	private static final SimpleDateFormat defaultWebFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 	private static final List<SSHOptionType> config = SSHInitConfig.getSSHOptionTypeList();
 	
 	public Map<String,Object> findLogFromSSHServer(String logtype,String keyWord,String date ) throws UnsupportedEncodingException{
-		super.methodIn("findLogFromSSHServer", logtype,keyWord,date);
 		
 		Map<String,Object> retMap = new HashMap<String, Object>();
 		retMap.put("success", false);
@@ -85,8 +83,6 @@ public class SSHLogService extends PortalService{
 		}
 		retMap.put("success", true);
 		retMap.put("msg", msg.toString());
-		
-		super.methodOut("findLogFromSSHServer", retMap);
 		
 		return retMap;
 	}

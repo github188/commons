@@ -96,6 +96,13 @@
 			</exclusions>
 		</dependency>
 		
+		<!-- ssh2连接 -->
+		<dependency>
+			<groupId>ch.ethz.ganymed</groupId>
+			<artifactId>ganymed-ssh2</artifactId>
+			<version>262</version>
+		</dependency>
+		
 		<!-- 配制读取 -->
 		<dependency>
 			<groupId>commons-configuration</groupId>

@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.gzjp.base.logger.ssh.entity.SSHOptionType;
-import cn.gzjp.base.logger.ssh.entity.SSHServer;
-import cn.gzjp.base.util.CloseUtil;
-import cn.gzjp.base.util.File2StrResultlImpl;
-import cn.gzjp.base.util.JPBeanUtil;
+import cn.gzjp.common.modules.fs.conver.impl.File2StrResultlImpl;
+import cn.gzjp.common.modules.ssh.entity.SSHOptionType;
+import cn.gzjp.common.modules.ssh.entity.SSHServer;
+import cn.gzjp.common.utils.CloseUtil;
+import cn.gzjp.common.utils.JPBeanUtil;
 
 public class SSHInitConfig {
 	//private static final SSHInitConfig config = new SSHInitConfig();
@@ -30,7 +30,7 @@ public class SSHInitConfig {
 			Map<String,SSHServer> sshServerMap = new HashMap<String,SSHServer>();
 			
 			in = SSHInitConfig.class.getResourceAsStream(filename);
-			File2StrResultlImpl f2sResult = new File2StrResultlImpl(in);
+			File2StrResultlImpl f2sResult = new File2StrResultlImpl(in,'#');
 			while(f2sResult.hasNext()){
 				line = f2sResult.next();
 				if(line.indexOf("#")==0)continue;
