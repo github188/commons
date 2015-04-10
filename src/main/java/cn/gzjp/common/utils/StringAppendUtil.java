@@ -1,6 +1,13 @@
 package cn.gzjp.common.utils;
 
-public class StringUtil {
+/**
+ * 为字符串添加到指定长度
+ * @Description: TODO
+ * @ClassName: StringUtil 
+ * @author huangzy@gzjp.cn
+ * @date 2015年4月10日 下午5:17:29
+ */
+public class StringAppendUtil {
 
 	public static String appendToStringLeft(String num,int i,String a){
 		if(num.length()>=i){
