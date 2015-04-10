@@ -1,17 +1,7 @@
 package cn.gzjp.common.modules.wsHepler.impl;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.StringEntity;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
 
 import cn.gzjp.common.modules.wsHepler.iface.HandleReturnIface;
 
@@ -47,34 +37,13 @@ public class DefaultXFireClient extends BaseXFireClient {
 	}
 
 	public String execute(String msg) throws Exception{
-		StringEntity entity = new StringEntity(messageFormat(msg), getCharSet());
-		HandleReturnIface<String> handle = getDefaultHandle();
-		return execute(entity,handle);
+		StringHandle stringHandle = new StringHandle(getCharSet());
+		return this.execute(msg,stringHandle);
 	}
-
-	public HandleReturnIface<String> getDefaultHandle() {
-		HandleReturnIface handle = new HandleReturnIface<String>() {
-			public String handle(String body) throws ParserConfigurationException, SAXException, IOException {
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder builder = factory.newDocumentBuilder();
-				byte[] buf = body.getBytes(getCharSet());
-				Document doc = builder.parse(new ByteArrayInputStream(buf));
-				
-				/**
-				 *如
-				 *<soap:Body>
-				 * 	<sayHelloResponse xmlns="http://service.test.hzying.com">
-				 * 		<out xmlns="http://service.test.hzying.com">Hello, jp.
-				 * 		</out>
-				 *  </sayHelloResponse>
-				 * </soap:Body>
-				 */
-				Node node = doc.getFirstChild().getFirstChild();
-				return node.getTextContent();
-			}
-			
-		};
-		return handle;
+	
+	public <T> T execute(String msg,HandleReturnIface<T> handle) throws Exception{
+		StringEntity entity = new StringEntity(messageFormat(msg), getCharSet());
+		return this.execute(entity,handle);
 	}
 
 	public String getSOAPAction() {
