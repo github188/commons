@@ -43,26 +43,25 @@ public class PropertiesCacheUtil{
 		
 		if(propConf!=null){
 			return propConf;
-		}else{
-			
-			synchronized (lock) {
-				propConf = propConfCacheMap.get(filepath);
-				if(propConf==null){
-					propConf = new PropertiesConfiguration();
-					propConf.setEncoding(encoding);
-					try {
-						propConf.load(filepath);
-					} catch (ConfigurationException e) {
-						throw new RuntimeException(e);
-					}
-					
-					propConf.setReloadingStrategy(reloadingStrategy);
-					
-					propConfCacheMap.put(filepath, propConf);
-				}
-			}
-			
 		}
+		
+		synchronized (lock) {
+			propConf = propConfCacheMap.get(filepath);
+			if(propConf==null){
+				propConf = new PropertiesConfiguration();
+				propConf.setEncoding(encoding);
+				try {
+					propConf.load(filepath);
+				} catch (ConfigurationException e) {
+					throw new RuntimeException(e);
+				}
+				
+				propConf.setReloadingStrategy(reloadingStrategy);
+				
+				propConfCacheMap.put(filepath, propConf);
+			}
+		}
+			
 		return propConf;
 	}
 	
