@@ -3,6 +3,8 @@
  *     all right reserved
  * @author:Mr.Yellow
  *     2014年5月19日
+ *     
+ * modify by huangzy@gzjp.cn
  */
 package cn.gzjp.common.utils;
 
