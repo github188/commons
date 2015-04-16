@@ -18,9 +18,17 @@ public class TempletaReplaceUtil {
 		if(templeta==null) return templeta;
 		for(Map.Entry<String, String> entity:param.entrySet()){
 			if(entity.getValue()!=null){
-				templeta = templeta.replaceAll("\\$\\{"+entity.getKey()+"\\}", entity.getValue());
+				templeta = templetaReplace(templeta, entity.getKey(), entity.getValue());
 			}
 		}
+		
+		return templeta;
+	}
+	
+	public static String templetaReplace(String templeta,String key,String val){
+		if(templeta==null) return templeta;
+		
+		templeta = templeta.replaceAll("\\$\\{"+key+"\\}",val);
 		
 		return templeta;
 	}
