@@ -1,7 +1,5 @@
 package myUtils.state.impl;
 
-import javax.servlet.http.HttpServletRequest;
-
 import myUtils.state.LoginState;
 import myUtils.state.LoginUnicomContext;
 import myUtils.state.vo.UrlVO;
