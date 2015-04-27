@@ -21,7 +21,7 @@ public class CheckUAState implements LoginState{
 		//非客户端访问
 		if(!isUnicomAppUA(context.getRequest())){
 			ReDirectUtil.getInstance(context.getRequest(), 
-					context.getResponse()).forward(UrlVO.ACTIVITY_LOGIN_IDX);
+					context.getResponse()).toUrl(UrlVO.ACTIVITY_LOGIN_IDX);
 			return;
 		}
 		context.setAndDoAction(new IPhoneUAState());

@@ -17,7 +17,7 @@ public class IPhoneUAState implements LoginState {
 	public void action(LoginUnicomContext context) throws Exception {
 		if(isIPhoneAndUnicomUA(context.getRequest())){
 			ReDirectUtil.getInstance(context.getRequest(), 
-					context.getResponse()).forward(UrlVO.ACTIVITY_LOGIN_IDX);
+					context.getResponse()).toUrl(UrlVO.ACTIVITY_LOGIN_IDX);
 			return;
 		}
 		
@@ -27,7 +27,7 @@ public class IPhoneUAState implements LoginState {
 		location = TempletaReplaceUtil.templetaReplace(location, param);
 		
 		ReDirectUtil.getInstance(context.getRequest(), 
-				context.getResponse()).sendRedirect(location);
+				context.getResponse()).toUrl(location);
 		
 		//流程结束
 

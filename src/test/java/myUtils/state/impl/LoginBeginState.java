@@ -20,7 +20,7 @@ public class LoginBeginState implements LoginState {
 		
 		//已取得手机号,不需要登录
 		if(StringUtils.isNotBlank(phoneNum)){
-			ReDirectUtil.getInstance(context.getRequest(), context.getResponse()).forward(UrlVO.ACTIVITY_IDX);
+			ReDirectUtil.getInstance(context.getRequest(), context.getResponse()).toUrl(UrlVO.ACTIVITY_IDX);
 			return;
 		}
 		

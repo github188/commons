@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2015年4月27日 下午1:57:14
  */
 public class ReDirectUtil {
+	public final static String SENDREDIRECT = "redirect";
+	public final static String FORWARD = "forward";
+	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
@@ -26,11 +29,29 @@ public class ReDirectUtil {
 		return new ReDirectUtil(request, response);
 	}
 	
-	public void forward(String path) throws ServletException, IOException{
+	public void toUrl(String url) throws ServletException, IOException{
+		if(url==null) throw new IllegalArgumentException("跳转url不能为空");
+		
+		String[] arr = url.split(":");
+		if(arr.length!=2){
+			forward(url);
+			return;
+		}
+		
+		String _type = arr[0];
+		String _url = arr[1];
+		if(_type.equalsIgnoreCase(SENDREDIRECT)){
+			sendRedirect(_url);
+		}else if(_type.equalsIgnoreCase(FORWARD)){
+			forward(_url);
+		}
+	}
+	
+	private void forward(String path) throws ServletException, IOException{
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 	
-	public void sendRedirect(String location) throws ServletException, IOException{
+	private void sendRedirect(String location) throws ServletException, IOException{
 		response.sendRedirect(location);
 	}
 }
