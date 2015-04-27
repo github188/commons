@@ -31,8 +31,7 @@ public class LoginUnicomContext {
 	}
 	
 	public void setAndDoAction(LoginState state) throws Exception{
-		setState(state);
-		doAction();
+		setState(state).doAction();
 	}
 	
 	public LoginState getState() {
