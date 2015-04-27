@@ -1,0 +1,36 @@
+package cn.gzjp.common.utils;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 服务端跳转/重定向
+ * @Description: TODO
+ * @ClassName: ReDirectUtil 
+ * @author huangzy@gzjp.cn
+ * @date 2015年4月27日 下午1:57:14
+ */
+public class ReDirectUtil {
+	private HttpServletRequest request;
+	private HttpServletResponse response;
+	
+	private ReDirectUtil(HttpServletRequest request,HttpServletResponse response){
+		this.request = request;
+		this.response = response;
+	}
+	
+	public static ReDirectUtil getInstance(HttpServletRequest request,HttpServletResponse response){
+		return new ReDirectUtil(request, response);
+	}
+	
+	public void forward(String path) throws ServletException, IOException{
+		request.getRequestDispatcher(path).forward(request, response);
+	}
+	
+	public void sendRedirect(String location) throws ServletException, IOException{
+		response.sendRedirect(location);
+	}
+}
