@@ -6,7 +6,7 @@ import java.io.Writer;
 import cn.gzjp.common.modules.fs.conver.ConverToStrIface;
 import cn.gzjp.common.modules.fs.conver.impl.DefaultConverToStrImpl;
 import cn.gzjp.common.modules.fs.engine.Obj2StrHandleIface;
-import cn.gzjp.common.modules.fs.engine.impl.DefaultObj2StrHandleImpl;
+import cn.gzjp.common.modules.fs.engine.impl.BaseObj2StrHandleImpl;
 
 /**
  * @ClassName: Str2FileTemplateEx 
@@ -15,7 +15,7 @@ import cn.gzjp.common.modules.fs.engine.impl.DefaultObj2StrHandleImpl;
  * @date 2014年7月17日 下午3:02:37
  */
 public class Str2FileTemplateEx {
-	private Obj2StrHandleIface obj2Strhandle = new DefaultObj2StrHandleImpl();
+	private Obj2StrHandleIface obj2Strhandle = new BaseObj2StrHandleImpl();
 	private ConverToStrIface converToStr = new DefaultConverToStrImpl();
 	
 	public String writeOut(Object obj) throws Exception{

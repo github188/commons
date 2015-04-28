@@ -13,7 +13,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * @ClassName: PropertiesUtil 
  * modify by huangzy@gzjp.cn
  * @date 2014年8月8日 下午1:36:29
+ * 
+ * 此类已经不用
+ * @see PropertiesCacheUtil
  */
+@Deprecated
 public final class PropertiesUtil {
 	
 	private PropertiesUtil() {}
