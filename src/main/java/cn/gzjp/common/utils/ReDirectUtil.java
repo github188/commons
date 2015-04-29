@@ -32,19 +32,20 @@ public class ReDirectUtil {
 	public void toUrl(String url) throws ServletException, IOException{
 		if(url==null) throw new IllegalArgumentException("跳转url不能为空");
 		
-		String[] arr = url.split(":");
-		if(arr.length!=2){
+		if(url.indexOf(SENDREDIRECT)!=-1){
+			url = subUrl(url, SENDREDIRECT);
+			sendRedirect(url);
+		}else{
+			if(url.indexOf(FORWARD)!=-1){
+				url = subUrl(url, FORWARD);
+			}
 			forward(url);
-			return;
 		}
-		
-		String _type = arr[0];
-		String _url = arr[1];
-		if(_type.equalsIgnoreCase(SENDREDIRECT)){
-			sendRedirect(_url);
-		}else if(_type.equalsIgnoreCase(FORWARD)){
-			forward(_url);
-		}
+	}
+	
+	private String subUrl(String url,String type){
+		url = url.substring(url.indexOf(type)+type.length()+1);
+		return url;
 	}
 	
 	private void forward(String path) throws ServletException, IOException{
