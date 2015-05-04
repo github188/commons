@@ -78,7 +78,6 @@ public class LoginBeginState implements LoginReDirect {
 		+" get phone from aop "+ticket+","+phoneNum
 		+" redirect "+UrlConfig.ACTIVITY_IDX);
 		
-		//context.getRequest().setAttribute(ConstantVo.USER_SESSION_KEY, phoneNum);
 		ReDirectUtil.getInstance(context.getRequest(), context.getResponse()).toUrl(UrlConfig.ACTIVITY_IDX);
 		
 	}
