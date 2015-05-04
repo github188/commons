@@ -20,7 +20,7 @@ public class IPhoneUAState implements LoginReDirect {
 	@Override
 	public void action(LoginUnicomContext context) throws Exception {
 		
-		//因为iphone可以直接获取到手机号，则可以直接进入
+		//根据流程,如果是IPhone进入手厅,并且未取到手机号,则转到活动自身登录页面.
 		if(isIPhoneAndUnicomUA(context.getRequest())){
 			reDirect(context);
 			return;
