@@ -1,7 +1,6 @@
 package cn.gzjp.common.modules.fs.conver.impl;
 
 import java.io.BufferedReader;
-import java.io.Closeable;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +19,7 @@ import cn.gzjp.common.utils.UnicodeReader;
  * @author huangzy
  * 2014年7月8日
  */
-public class File2StrResultlImpl implements F2SResultIface,Closeable{
+public class File2StrResultlImpl implements F2SResultIface{
 	private String line;
 	private BufferedReader reader;
 	//用户记录某一行是否不为空，为空则此标记为0，反之则为1；(预留)
@@ -28,24 +27,27 @@ public class File2StrResultlImpl implements F2SResultIface,Closeable{
 	
 	private static final String DEFAULT_CHARSET = "utf8";
 	private static final char DEFAULT_COMMENTS = '#';
-	//注释符,首个字符为 注释符的行将被当成空行,不进行处理;
-	private char comments;
+	
+	private char comments = DEFAULT_COMMENTS;
+	
+	public File2StrResultlImpl(){}
 	
 	public File2StrResultlImpl(String filepath) throws IOException{
-		this(new FileInputStream(filepath),DEFAULT_COMMENTS);
+		this(new FileInputStream(filepath),DEFAULT_CHARSET,DEFAULT_COMMENTS);
 	}
 	
 	public File2StrResultlImpl(InputStream in,char comments) throws IOException{
-		this.reader = initReader(in);
 		this.comments = comments;
+		this.reader = initReader(in,DEFAULT_CHARSET);
 	}
 	
-	private BufferedReader initReader(InputStream in) throws UnsupportedEncodingException{
-		return new BufferedReader(new UnicodeReader(in,DEFAULT_CHARSET));
+	public File2StrResultlImpl(InputStream in,String charset,char comments) throws IOException{
+		this.comments = comments;
+		this.reader = initReader(in,charset);
 	}
 	
-	public File2StrResultlImpl(){
-		this.comments = DEFAULT_COMMENTS;
+	private BufferedReader initReader(InputStream in,String charset) throws UnsupportedEncodingException{
+		return new BufferedReader(new UnicodeReader(in,charset));
 	}
 	
 	/**
@@ -83,15 +85,14 @@ public class File2StrResultlImpl implements F2SResultIface,Closeable{
 		CloseUtil.close(reader);
 	}
 	
+	public void setReader(BufferedReader reader) throws Exception {
+		this.reader = reader;
+	}
+	
 	@Override
 	protected void finalize() throws Throwable {
 		//防止文件未关闭
 		this.close();
 		super.finalize();
 	}
-	@Override
-	public void setInputStream(InputStream is) throws Exception {
-		this.reader = initReader(is);
-	}
-
 }

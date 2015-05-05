@@ -49,12 +49,17 @@ public class BigFile2StrResultlImpl extends File2StrResultlImpl implements BigF2
 		}
 		return super.hasNext();
 	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+	}
 	
 	/*public static void main(String[] args) throws IOException, InterruptedException {
-		int max = 2;
+		int max = 5;
 		
 		BigFile2StrResultlImpl impl = new 
-				BigFile2StrResultlImpl("E:\\ftp_server_file\\filecenter_out\\user\\a.txt", max);
+				BigFile2StrResultlImpl("E:\\loverlymay_visit_2015-05-02.log", max);
 		
 		while(true){
 			int k=0;
@@ -62,7 +67,7 @@ public class BigFile2StrResultlImpl extends File2StrResultlImpl implements BigF2
 				System.out.println(impl.next());
 				k++;
 			}
-			System.out.println("################################");
+			System.out.println("############################################################");
 			if(k!=max) break;
 			Thread.currentThread().sleep(3*1000);
 		}

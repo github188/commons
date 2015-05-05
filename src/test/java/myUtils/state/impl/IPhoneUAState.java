@@ -26,15 +26,7 @@ public class IPhoneUAState implements LoginReDirect {
 			return;
 		}
 		
-		String location = UrlConfig.ACTIVITY_LOGIN_APP;
-		HttpServletRequest request = context.getRequest();
-		
-		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
-		location = TempletaReplaceUtil.templetaReplace(location, "basePath", basePath);
-		
-		logger.info(context.getRequest().getRemoteAddr()+" "
-				+context.getRequest().getRequestedSessionId()
-		+" not iphone user　redirect "+location);
+		String location = getUnicomUrl(context);
 		
 		ReDirectUtil.getInstance(context.getRequest(),context.getResponse()).toUrl(location);
 		
@@ -50,6 +42,21 @@ public class IPhoneUAState implements LoginReDirect {
 		ReDirectUtil.getInstance(context.getRequest(), 
 				context.getResponse()).toUrl(UrlConfig.ACTIVITY_LOGIN_IDX);
 		
+	}
+	
+	//获取替换本机服务器IP后的 统一登录url
+	private String getUnicomUrl(LoginUnicomContext context){
+			
+		String location = UrlConfig.ACTIVITY_LOGIN_APP;
+		HttpServletRequest request = context.getRequest();
+			
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+		location = TempletaReplaceUtil.templetaReplace(location, "basePath", basePath);
+			
+		logger.info(context.getRequest().getRemoteAddr()+" "
+					+context.getRequest().getRequestedSessionId() +" not iphone user　redirect "+location);
+			
+		return location;
 	}
 	
 	private boolean isIPhoneAndUnicomUA(HttpServletRequest request){

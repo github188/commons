@@ -2,11 +2,14 @@ package cn.gzjp.common.modules.fs.engine.impl;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import cn.gzjp.common.modules.fs.conver.ConverToStrIface;
 
 public class DefaultObj2StrHandleImpl extends BaseObj2StrHandleImpl{
-
+	private static final ConcurrentMap<Class,Field[]> fieldCache = new ConcurrentHashMap<Class,Field[]>();
+	
 	@Override
 	public String obj2StrConver(Object obj, ConverToStrIface annotHandle)
 			throws Exception {

@@ -1,6 +1,11 @@
 package cn.gzjp.common.modules.fs.conver.impl;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -9,7 +14,16 @@ import cn.gzjp.common.modules.fs.conver.ConverToObjIface;
 import cn.gzjp.common.modules.fs.fsEntity.FSEntityIface;
 import cn.gzjp.common.modules.fs.fsEntity.annot.PositionAnnotaion;
 
+/**
+ * 将字符串转为对象 实现
+ * @Description: TODO
+ * @ClassName: DefaultConverToObjImpl 
+ * @author huangzy@gzjp.cn
+ * @date 2015年5月5日 下午2:14:06
+ */
 public class DefaultConverToObjImpl implements ConverToObjIface{
+	
+	private static final ConcurrentMap<Class, HashMap<String,Integer>> fieldCache = new ConcurrentHashMap<Class, HashMap<String,Integer>>();
 	
 	public DefaultConverToObjImpl(){}
 	
@@ -17,6 +31,58 @@ public class DefaultConverToObjImpl implements ConverToObjIface{
 		if(StringUtils.isBlank(str)){
 			return null;
 		}
+		
+		T t = getInstance(c);
+		
+		Object[] arr = t.toArray(str);
+		
+		if(arr.length==0){
+			throw new IllegalArgumentException("拆分字符串出错！字符串："+str);
+		}
+		
+		String fieldName;
+		Object fieldVal;
+		HashMap<String, Integer> fieldAndPosiMap = getFieldAndPosiMap(c);
+		for(Map.Entry<String, Integer> entry: fieldAndPosiMap.entrySet()){
+			fieldName = entry.getKey();
+			fieldVal = arr[entry.getValue()];
+			
+			BeanUtils.setProperty(t, fieldName, fieldVal);
+		}
+		
+		return t;
+	}
+	
+	private HashMap<String, Integer>  getFieldAndPosiMap(Class clazz){
+		HashMap<String, Integer> fieldAndPosiMap = fieldCache.get(clazz);
+		
+		if(fieldAndPosiMap==null){
+			fieldAndPosiMap = new HashMap<String, Integer>();
+			
+			Field[] fields = clazz.getDeclaredFields();
+			for(Field f:fields){
+				PositionAnnotaion positionAnnot = f.getAnnotation(PositionAnnotaion.class);
+				if(positionAnnot!=null){
+					int position = positionAnnot.value();
+					if(fieldAndPosiMap.containsValue(position)){
+						throw new RuntimeException("fsEntity 有重复的position位置!");
+					}
+					String fieldName = f.getName();
+					
+					fieldAndPosiMap.put(fieldName, position);
+				}
+			}
+			if(fieldAndPosiMap.size()==0) {
+				throw new RuntimeException("fsEntity 没有找到position注解!");
+			}
+			fieldCache.put(clazz, fieldAndPosiMap);
+		}
+		
+		return fieldAndPosiMap;
+	}
+	
+	private <T> T getInstance(Class<T> c) throws InstantiationException, IllegalAccessException,
+		ClassNotFoundException, IllegalArgumentException, SecurityException, InvocationTargetException{
 		
 		T t = null;
 		String className = c.getName();
@@ -31,27 +97,7 @@ public class DefaultConverToObjImpl implements ConverToObjIface{
 			t = c.newInstance();
 		}
 		
-		Object[] arr = t.toArray(str);
-
-		if(arr.length==0){
-			throw new IllegalArgumentException("拆分字符串出错！字符串："+str);
-		}
-
-		int position = 0;
-		String fieldName;
-		Object fieldVal;
-		Field[] fields = c.getDeclaredFields();
-		for(Field f:fields){
-			PositionAnnotaion positionAnnot = f.getAnnotation(PositionAnnotaion.class);
-			if(positionAnnot!=null){
-				position = positionAnnot.value();
-				
-				fieldName = f.getName();
-				
-				fieldVal = arr[position];
-				BeanUtils.setProperty(t, fieldName, fieldVal);
-			}
-		}
+		//t.getClass().newInstance();
 		return t;
 	}
 }
