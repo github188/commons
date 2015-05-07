@@ -33,6 +33,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class WebFileSpringUpload {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 	
+	public static File uploadSingleFile(HttpServletRequest request,String savaDir,String mark) throws IOException{
+		Map<String,File> result = upload(request, savaDir, mark);
+		
+		File file = result.values().iterator().next();
+		
+		return file;
+	}
+	
 	/**
 	 * 上传单个文件
 	 * @param request
@@ -46,16 +54,6 @@ public class WebFileSpringUpload {
 		Map<String,File> result = upload(request, savaDir, mark);
 		
 		return result.get(fieldName);
-	}
-	
-	/**
-	 * 获取一个文件的相对路径
-	 * @param filepath
-	 * @param savaDir
-	 * @return
-	 */
-	public static String getWebRelativePath(String filepath,String savaDir){
-		return filepath.substring(filepath.indexOf(savaDir));
 	}
 	
 	/**
@@ -105,6 +103,16 @@ public class WebFileSpringUpload {
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * 获取一个文件的相对路径
+	 * @param filepath
+	 * @param savaDir
+	 * @return
+	 */
+	public static String getWebRelativePath(String filepath,String savaDir){
+		return filepath.substring(filepath.indexOf(savaDir));
 	}
 	
 	//删除之前上传成功的文件

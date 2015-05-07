@@ -25,20 +25,19 @@ public class BigFile2StrResultlImpl extends File2StrResultlImpl implements BigF2
 	
 	@Override
 	public boolean batche() {
-		List<Integer> flagList = super.getFlagList();
-		flagList = flagList.subList(currentLine, flagList.size());
-		
 		int k=0;
-		for(int i:flagList){
-			if(i==1) k++;
+		List<Integer> flagList = super.getFlagList();
+		for(int tmpCurrentLine=this.currentLine;tmpCurrentLine<flagList.size();tmpCurrentLine++){
+			Integer v = flagList.get(tmpCurrentLine);
 			
-			if(k==maxLine){
-				currentLine = k+currentLine;
+			if(v==1) k++;
+			if(k==this.maxLine){
+				this.currentLine = k+this.currentLine;
 				
 				return true;
 			}
 		}
-
+		
 		return false;
 	}
 	
