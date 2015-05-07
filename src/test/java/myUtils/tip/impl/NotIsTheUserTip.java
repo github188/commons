@@ -2,7 +2,7 @@ package myUtils.tip.impl;
 
 import java.util.Map;
 
-import cn.gzjp.common.modules.tip.impl.AbstractTip;
+import com.common.modules.tip.impl.AbstractTip;
 
 /**
  * 非定向用户提示

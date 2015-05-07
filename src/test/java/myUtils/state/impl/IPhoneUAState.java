@@ -9,9 +9,9 @@ import myUtils.state.config.UrlConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.gzjp.common.utils.ReDirectUtil;
-import cn.gzjp.common.utils.TempletaReplaceUtil;
-import cn.gzjp.common.utils.UserAgentUtil;
+import com.common.utils.ReDirectUtil;
+import com.common.utils.TempletaReplaceUtil;
+import com.common.utils.UserAgentUtil;
 
 public class IPhoneUAState implements LoginReDirect {
 	

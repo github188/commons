@@ -2,7 +2,7 @@ package myUtils.state.config;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import cn.gzjp.common.utils.PropertiesCacheUtil;
+import com.common.utils.PropertiesCacheUtil;
 
 public class UrlConfig {
 	private final static PropertiesConfiguration configuration = 

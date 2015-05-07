@@ -1,7 +1,7 @@
 package myUtils.tip;
 
 import myUtils.tip.impl.NotIsTheUserTip;
-import cn.gzjp.common.modules.tip.TipTypeIface;
+import com.common.modules.tip.TipTypeIface;
 
 /**
  * 提示工厂类

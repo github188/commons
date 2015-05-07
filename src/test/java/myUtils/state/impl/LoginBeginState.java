@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.gzjp.common.utils.ReDirectUtil;
+import com.common.utils.ReDirectUtil;
 
 public class LoginBeginState implements LoginReDirect {
 	
