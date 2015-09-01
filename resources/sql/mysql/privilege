@@ -1,0 +1,118 @@
+/*=============================================== 权限管理 huangzy 2015-10-12  start ======================*/
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `SYS_USER_HOSPITALS`;
+DROP TABLE IF EXISTS SYS_USER_ROLES;
+
+-- ----------------------------
+-- Table structure for SYS_ORGANIZATION
+-- ----------------------------
+DROP TABLE IF EXISTS `SYS_ORGANIZATION`;
+CREATE TABLE `SYS_ORGANIZATION` (
+  `ID` varchar(32) NOT NULL,
+  `NAME` varchar(64) DEFAULT NULL COMMENT '组织/机构/公司 名称',
+  `INTRODUCTION` varchar(1024) DEFAULT NULL COMMENT '简介',
+  `PARENT_ID` varchar(32) DEFAULT NULL COMMENT '父ID',
+  `CODE` varchar(16) DEFAULT NULL COMMENT '编码(预留)',
+  `MEMO` varchar(255) DEFAULT NULL COMMENT '备注',
+  `CP` varchar(32) DEFAULT NULL,
+  `CT` datetime DEFAULT NULL,
+  `EP` varchar(32) DEFAULT NULL,
+  `ET` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_Reference_9` (`PARENT_ID`),
+  CONSTRAINT `FK_Reference_9` FOREIGN KEY (`PARENT_ID`) REFERENCES `SYS_ORGANIZATION` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组织/机构/公司';
+
+-- ----------------------------
+-- Table structure for SYS_RESOURCE
+-- ----------------------------
+DROP TABLE IF EXISTS `SYS_RESOURCE`;
+CREATE TABLE `SYS_RESOURCE` (
+  `ID` varchar(32) NOT NULL,
+  `NAME` varchar(128) NOT NULL COMMENT '资源名称',
+  `CODE` varchar(128) DEFAULT NULL COMMENT '编码(预留)',
+  `ABSTR` varchar(128) DEFAULT NULL COMMENT '资源抽象(类型为菜单则值为菜单ID;其它则为字符串或正规表达式)',
+  `TYPE` smallint(6) NOT NULL COMMENT '资源类型(1菜单;2;按钮;3普通链接;4医院)',
+  `MEMO` varchar(255) DEFAULT NULL COMMENT '备注',
+  `CP` varchar(32) DEFAULT NULL,
+  `CT` datetime DEFAULT NULL,
+  `EP` varchar(32) DEFAULT NULL,
+  `ET` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资源表';
+
+-- ----------------------------
+-- Table structure for SYS_ROLE
+-- ----------------------------
+DROP TABLE IF EXISTS `SYS_ROLE`;
+CREATE TABLE `SYS_ROLE` (
+  `ID` varchar(32) NOT NULL,
+  `NAME` varchar(32) DEFAULT NULL COMMENT '角色名称',
+  `CODE` varchar(32) DEFAULT NULL COMMENT '角色编码',
+  `MEMO` varchar(255) DEFAULT NULL COMMENT '备注',
+  `AVAILABLE` smallint(6) DEFAULT NULL COMMENT '是否可用(0禁用;1可用)',
+  `CP` varchar(32) DEFAULT NULL,
+  `CT` datetime DEFAULT NULL,
+  `EP` varchar(32) DEFAULT NULL,
+  `ET` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
+
+-- ----------------------------
+-- Table structure for SYS_ROLE_RESOURCE
+-- ----------------------------
+DROP TABLE IF EXISTS `SYS_ROLE_RESOURCE`;
+CREATE TABLE `SYS_ROLE_RESOURCE` (
+  `ID` varchar(32) NOT NULL,
+  `ROLE_ID` varchar(32) NOT NULL,
+  `RESOURCE_ID` varchar(32) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_Reference_5` (`ROLE_ID`),
+  KEY `FK_Reference_6` (`RESOURCE_ID`),
+  CONSTRAINT `FK_Reference_6` FOREIGN KEY (`RESOURCE_ID`) REFERENCES `SYS_RESOURCE` (`ID`),
+  CONSTRAINT `FK_Reference_5` FOREIGN KEY (`ROLE_ID`) REFERENCES `SYS_ROLE` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色资源表';
+
+-- ----------------------------
+-- Table structure for SYS_USER
+-- ----------------------------
+DROP TABLE IF EXISTS `SYS_USER`;
+CREATE TABLE `SYS_USER` (
+  `ID` varchar(32) NOT NULL,
+  `FULL_NAME` varchar(25) DEFAULT NULL COMMENT '显示名称',
+  `USER_NAME` varchar(25) DEFAULT NULL COMMENT '登录名',
+  `PASSWORD` varchar(128) DEFAULT NULL COMMENT '密码',
+  `SALT` varchar(25) DEFAULT NULL COMMENT '盐值',
+  `EMAIL` varchar(50) DEFAULT NULL COMMENT '邮箱',
+  `MEMO` varchar(255) DEFAULT NULL COMMENT '备注',
+  `AVAILABLE` smallint(6) DEFAULT NULL COMMENT '是否可用(0禁用;1可用)',
+  `ORGANIZATION_ID` varchar(32) DEFAULT NULL COMMENT '组织/机构/公司ID',
+  `LAST_LOGIN_TIME` datetime DEFAULT NULL COMMENT '上次登录时间',
+  `LAST_LOGIN_IP` varchar(15) DEFAULT NULL COMMENT '上次登录IP',
+  `CP` varchar(32) DEFAULT NULL,
+  `CT` datetime DEFAULT NULL,
+  `EP` varchar(32) DEFAULT NULL,
+  `ET` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_Reference_7` (`ORGANIZATION_ID`),
+  KEY `FK_Reference_8` (`CP`),
+  CONSTRAINT `FK_Reference_8` FOREIGN KEY (`CP`) REFERENCES `SYS_USER` (`ID`),
+  CONSTRAINT `FK_Reference_7` FOREIGN KEY (`ORGANIZATION_ID`) REFERENCES `SYS_ORGANIZATION` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统用户表';
+
+-- ----------------------------
+-- Table structure for SYS_USER_ROLE
+-- ----------------------------
+DROP TABLE IF EXISTS `SYS_USER_ROLE`;
+CREATE TABLE `SYS_USER_ROLE` (
+  `ID` varchar(32) NOT NULL,
+  `USER_ID` varchar(32) NOT NULL,
+  `ROLE_ID` varchar(32) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_Reference_3` (`USER_ID`),
+  KEY `FK_Reference_4` (`ROLE_ID`),
+  CONSTRAINT `FK_Reference_4` FOREIGN KEY (`ROLE_ID`) REFERENCES `SYS_ROLE` (`ID`),
+  CONSTRAINT `FK_Reference_3` FOREIGN KEY (`USER_ID`) REFERENCES `SYS_USER` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户角色表';
+SET FOREIGN_KEY_CHECKS=1;
+/*=============================================== 权限管理 huangzy 2015-10-12  end ======================*/
