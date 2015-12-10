@@ -9,7 +9,8 @@
  * </html>
  */
 /**
- * excel操作
+ * excel写操作
+ * TODO 有待重构
  * @Package: com.fzs.samp.commons.poi.aa
  * @ClassName: package-info
  * @Statement: <p></p>
@@ -21,4 +22,4 @@
  * @Why&What is modify:
  * @Version: 1.0
  */
-package com.common.modules.poi;
+package com.common.modules.poi.write;

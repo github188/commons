@@ -8,17 +8,20 @@
  *  </body>
  * </html>
  */
+package com.common.modules.fo.conver;
+
 /**
- * excel操作
- * @Package: com.fzs.samp.commons.poi.aa
- * @ClassName: package-info
- * @Statement: <p></p>
+ * @Package: com.fbs.samp.sys.pub.fs.conver
+ * @ClassName: ConverToStrIface
+ * @Statement: <p>将对象转为str</p>
  * @JDK version used: 
  * @Author: 黄忠英
- * @Create Date: 2016年10月12日
+ * @Create Date: 2016年4月28日
  * @modify By:
  * @modify Date:
  * @Why&What is modify:
  * @Version: 1.0
  */
-package com.common.modules.poi;
+public interface ConverToStrIface {
+	public String objToStr(Object obj) throws Exception;
+}

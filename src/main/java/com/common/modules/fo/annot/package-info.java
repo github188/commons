@@ -9,16 +9,15 @@
  * </html>
  */
 /**
- * excel操作
- * @Package: com.fzs.samp.commons.poi.aa
+ * @Package: com.fbs.samp.sys.pub.fs.annto
  * @ClassName: package-info
- * @Statement: <p></p>
+ * @Statement: <p>注解</p>
  * @JDK version used: 
  * @Author: 黄忠英
- * @Create Date: 2016年10月12日
+ * @Create Date: 2016年4月28日
  * @modify By:
  * @modify Date:
  * @Why&What is modify:
  * @Version: 1.0
  */
-package com.common.modules.poi;
+package com.common.modules.fo.annot;

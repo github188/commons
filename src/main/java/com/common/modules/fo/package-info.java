@@ -9,16 +9,19 @@
  * </html>
  */
 /**
- * excel操作
- * @Package: com.fzs.samp.commons.poi.aa
+ * @Package: com.fbs.samp.sys.pub.fs
  * @ClassName: package-info
- * @Statement: <p></p>
+ * @Statement: 
+ * <p>
+ * 	将文本文件转成bean,或将bean转成文本文件.(一般用于处理ftp上的以,分隔的文件)
+ * 	包名含意为 file to string
+ * </p>
  * @JDK version used: 
  * @Author: 黄忠英
- * @Create Date: 2016年10月12日
+ * @Create Date: 2016年4月28日
  * @modify By:
  * @modify Date:
  * @Why&What is modify:
  * @Version: 1.0
  */
-package com.common.modules.poi;
+package com.common.modules.fo;

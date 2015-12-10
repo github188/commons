@@ -8,10 +8,13 @@
  *  </body>
  * </html>
  */
+package com.common.modules.poi.read;
+
+import java.io.Closeable;
+
 /**
- * excel操作
- * @Package: com.fzs.samp.commons.poi.aa
- * @ClassName: package-info
+ * @Package: com.fzs.samp.commons.poi
+ * @ClassName: ExcelReader
  * @Statement: <p></p>
  * @JDK version used: 
  * @Author: 黄忠英
@@ -21,4 +24,8 @@
  * @Why&What is modify:
  * @Version: 1.0
  */
-package com.common.modules.poi;
+public interface ExcelReader<T> extends Closeable {
+	public T next() throws Exception;
+
+	public boolean hasNext();
+}
