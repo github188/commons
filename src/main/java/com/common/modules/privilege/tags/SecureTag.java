@@ -20,10 +20,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.yxw.platform.privilege.UserConstant;
-import com.yxw.platform.privilege.subject.Subject;
-import com.yxw.platform.privilege.subject.SubjectFactory;
-import com.yxw.platform.privilege.vo.AuthorizationVo;
+import com.common.modules.privilege.subject.Subject;
+import com.common.modules.privilege.subject.SubjectFactory;
+import com.common.modules.privilege.vo.AuthorizationVo;
 
 /**
  * @Package: com.yxw.platform.privilege.tags

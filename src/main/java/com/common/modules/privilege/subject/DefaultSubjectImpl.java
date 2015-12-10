@@ -14,9 +14,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import com.yxw.platform.privilege.UserConstant;
-import com.yxw.platform.privilege.entity.Resource;
-import com.yxw.platform.privilege.vo.AuthorizationVo;
+import com.common.modules.privilege.entity.Resource;
+import com.common.modules.privilege.vo.AuthorizationVo;
 
 /**
  * @Package: com.yxw.platform.privilege.subject

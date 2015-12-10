@@ -10,8 +10,6 @@
  */
 package com.common.modules.privilege.entity;
 
-import com.yxw.framework.mvc.entity.BaseEntity;
-
 /**
  * @Package: com.yxw.platform.user.entity
  * @ClassName: UserRole
@@ -24,30 +22,24 @@ import com.yxw.framework.mvc.entity.BaseEntity;
  * @Why&What is modify:
  * @Version: 1.0
  */
-public class UserRole extends BaseEntity {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1384366663587392054L;
+public class UserRole {
+	private Integer id;
 
 	private String userId;
 	private String roleId;
 
 	/**
-	 * 
+	 * @return the id
 	 */
-	public UserRole() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
 	/**
-	 * @param userId
-	 * @param roleId
+	 * @param id the id to set
 	 */
-	public UserRole(String userId, String roleId) {
-		super();
-		this.userId = userId;
-		this.roleId = roleId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**
