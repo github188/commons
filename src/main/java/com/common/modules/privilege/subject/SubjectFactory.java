@@ -10,7 +10,7 @@
  */
 package com.common.modules.privilege.subject;
 
-import com.yxw.platform.privilege.vo.AuthorizationVo;
+import com.common.modules.privilege.vo.AuthorizationVo;
 
 /**
  * @Package: com.yxw.platform.privilege.subject

@@ -10,8 +10,6 @@
  */
 package com.common.modules.privilege.entity;
 
-import com.yxw.framework.mvc.entity.BaseEntity;
-
 /**
  * @Package: com.yxw.platform.user.entity
  * @ClassName: Organization
@@ -24,11 +22,9 @@ import com.yxw.framework.mvc.entity.BaseEntity;
  * @Why&What is modify:
  * @Version: 1.0
  */
-public class Organization extends BaseEntity {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2048354055540113573L;
+public class Organization {
+
+	private Integer id;
 
 	/**组织/机构/公司 名称*/
 	private String name;
@@ -42,26 +38,17 @@ public class Organization extends BaseEntity {
 	private String memo;
 
 	/**
-	 * 
+	 * @return the id
 	 */
-	public Organization() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
 	/**
-	 * @param name
-	 * @param introduction
-	 * @param parentId
-	 * @param code
-	 * @param memo
+	 * @param id the id to set
 	 */
-	public Organization(String name, String introduction, String parentId, String code, String memo) {
-		super();
-		this.name = name;
-		this.introduction = introduction;
-		this.parentId = parentId;
-		this.code = code;
-		this.memo = memo;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**

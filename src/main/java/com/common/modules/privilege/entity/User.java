@@ -4,8 +4,6 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.yxw.framework.mvc.entity.BaseEntity;
-
 /**
  * 
  * @Package: com.yxw.platform.privilege.entity
@@ -19,11 +17,8 @@ import com.yxw.framework.mvc.entity.BaseEntity;
  * @Why&What is modify:
  * @Version: 1.0
  */
-public class User extends BaseEntity {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3919371761064911257L;
+public class User {
+	private Integer id;
 	/**用户名称*/
 	private String fullName;
 	/**登录账号*/
@@ -41,37 +36,17 @@ public class User extends BaseEntity {
 	private String lastLoginIp;
 
 	/**
-	 * 
+	 * @return the id
 	 */
-	public User() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
 	/**
-	 * @param fullName
-	 * @param userName
-	 * @param password
-	 * @param salt
-	 * @param email
-	 * @param memo
-	 * @param available
-	 * @param organizationId
-	 * @param lastLoginTime
-	 * @param lastLoginIp
+	 * @param id the id to set
 	 */
-	public User(String fullName, String userName, String password, String salt, String email, String memo, Integer available, String organizationId,
-			Date lastLoginTime, String lastLoginIp) {
-		super();
-		this.fullName = fullName;
-		this.userName = userName;
-		this.password = password;
-		this.salt = salt;
-		this.email = email;
-		this.memo = memo;
-		this.available = available;
-		this.organizationId = organizationId;
-		this.lastLoginTime = lastLoginTime;
-		this.lastLoginIp = lastLoginIp;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**

@@ -10,8 +10,6 @@
  */
 package com.common.modules.privilege.entity;
 
-import com.yxw.framework.mvc.entity.BaseEntity;
-
 /**
  * @Package: com.yxw.platform.user.entity
  * @ClassName: Resource
@@ -24,11 +22,9 @@ import com.yxw.framework.mvc.entity.BaseEntity;
  * @Why&What is modify:
  * @Version: 1.0
  */
-public class Resource extends BaseEntity {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1626974507313156901L;
+public class Resource {
+	private Integer id;
+
 	/**资源名称*/
 	private String name;
 	/**编码(预留)*/
@@ -41,26 +37,17 @@ public class Resource extends BaseEntity {
 	private String memo;
 
 	/**
-	 * 
+	 * @return the id
 	 */
-	public Resource() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 
 	/**
-	 * @param name
-	 * @param code
-	 * @param abstr
-	 * @param type
-	 * @param memo
+	 * @param id the id to set
 	 */
-	public Resource(String name, String code, String abstr, Integer type, String memo) {
-		super();
-		this.name = name;
-		this.code = code;
-		this.abstr = abstr;
-		this.type = type;
-		this.memo = memo;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**

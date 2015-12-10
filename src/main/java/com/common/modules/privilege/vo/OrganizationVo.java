@@ -10,8 +10,6 @@
  */
 package com.common.modules.privilege.vo;
 
-import com.yxw.framework.mvc.entity.BaseEntity;
-
 /**
  * @Package: com.yxw.platform.privilege.vo
  * @ClassName: OrganizationVo
@@ -24,7 +22,9 @@ import com.yxw.framework.mvc.entity.BaseEntity;
  * @Why&What is modify:
  * @Version: 1.0
  */
-public class OrganizationVo extends BaseEntity {
+public class OrganizationVo {
+	private Integer id;
+
 	/**组织/机构/公司 名称*/
 	private String name;
 	/**简介*/
@@ -35,6 +35,20 @@ public class OrganizationVo extends BaseEntity {
 	private String code;
 	/**备注*/
 	private String memo;
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the name
