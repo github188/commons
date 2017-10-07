@@ -1,5 +1,6 @@
 package com.common.modules.poi.write;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -28,5 +29,12 @@ public interface ExcelWriter {
 	 * @param output
 	 */
 	public void writeOut(OutputStream output)  throws IOException;
-	
+
+	/**
+	 * Excel文件下载
+	 * @param fileName
+	 * @param response
+	 * @throws IOException
+	 */
+	public void writeOut(String fileName, HttpServletResponse response) throws IOException;
 }
